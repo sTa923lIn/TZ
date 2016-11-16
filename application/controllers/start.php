@@ -22,7 +22,7 @@ class Start extends CI_Controller {
 
 	function InsertData() // вставка данных в базу
 	{
-		
+
 		if (isset($_POST['add'])) // дописать еще пост полей или сделать так, что бы не было ложных срабатываний пост
 		{
 			$data=array(
@@ -42,12 +42,11 @@ class Start extends CI_Controller {
 	function UpdateData() // обновление данных в базе
 	{
 
-	
-			$id=$_GET['id']; 	
-		
 
-		$query['row']=$this->start_models->UpdateDb($id);
-		$this->load->view('update_view',$query);
+		$id=$_GET['id']; 	
+
+		$this->start_models->UpdateDb($id);
+		$this->load->view('good_view'); // вьшка добавления записи	
 
 	}
 

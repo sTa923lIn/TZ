@@ -41,6 +41,16 @@ class Start_Models extends CI_Model
 
 	}
 
+
+function InsertDbId ($data,$id) // вставка в базу
+
+	{
+		$this->db->where('id='.$id);;
+		$this->db->update('contacts',$data); 
+
+	}
+
+
 	function UpdateDb ($id) // обновление записи 
 	{
 		$this->db->where('id='.$id);
