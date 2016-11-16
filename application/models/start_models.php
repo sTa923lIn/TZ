@@ -45,7 +45,7 @@ class Start_Models extends CI_Model
 	{
 		$this->db->where('id='.$id);
 		$query=$this->db->get('contacts');
-		return $query->result_array();
+		return $query->row_array();
 		 
 	}
 

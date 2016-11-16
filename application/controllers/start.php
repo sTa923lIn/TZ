@@ -42,13 +42,11 @@ class Start extends CI_Controller {
 	function UpdateData() // обновление данных в базе
 	{
 
-		if (isset($_POST['add'])) // дописать еще пост полей или сделать так, что бы не было ложных срабатываний пост
-		{
-			$id=2; 	
-		}
+	
+			$id=$_GET['id']; 	
+		
 
-		$query['edit']=$this->start_models->UpdateDb($id);
-
+		$query['row']=$this->start_models->UpdateDb($id);
 		$this->load->view('update_view',$query);
 
 	}

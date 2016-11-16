@@ -17,7 +17,7 @@
 echo '<ul>';
 foreach ($table as $i)
 {
-    echo '<li><form  method="POST" action="index.php/start/UpdateData">
+    echo '<li><form  method="POST" action="index.php/start/UpdateData/?id='.$i['id'].'">
      Айдишник : '.$i['id'].' |Имя: '.$i['name'].'| Описание :'.$i['info'].
 		'| номер телефона :'.$i['number'].'
 			<input type="submit" name="add"  value="Редактировать"/>

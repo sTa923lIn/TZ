@@ -7,11 +7,11 @@
 <body>
 
 	<form method="POST" action="../start/InsertData">
-		<p>Введите имя абонента - <input type="text" name="username"/></p>
-		<p>Введите описание - <input type="text" name="userinfo"/></p>
-			<p>Введите номер телефона <input type="text" name="number"/></p>
+		<p>Введите имя абонента - <input type="text" name="username" value="<?php echo $row['name'];?>"/></p>
+		<p>Введите описание - <input type="text" name="userinfo" value="<?php echo $row['info'];?>"/></p>
+			<p>Введите номер телефона <input type="text" name="number" value="<?php echo $row['number'];?>"/></p>
 
-		<input type="submit" name="add" value="Добавить запись"/>
+		<input type="submit" name="add" value="Сохранить"/>
 
 
 
@@ -19,12 +19,6 @@
 	</form>
 <?php
 
-foreach ($edit as $i)
-{
-    echo '<li> Айдишник : '.$i['id'].' |Имя: '.$i['name'].'| Описание :'.$i['info'].
-		'| номер телефона :'.$i['number'].'</li>';
-
-}
 
 ?>
 
