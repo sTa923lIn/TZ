@@ -6,18 +6,20 @@
 </head>
 <body>
 
-	<form action="index.php/start/InsertData"> <!-- // передаем форму контроллеру start -->
+<?php
+
+	echo '<form  action="'.$InsertData.'"> <!-- // передаем форму контроллеру start -->
 			
 			<p><input type="submit" value="Добавить новую запись"/></p> <!-- кнопка добавления новой записи -->
 
-	</form>
+	</form>';
 
-	<?php
+	
 
 echo '<ul>';
 foreach ($table as $i)
 {
-    echo '<li><form  method="POST" action="index.php/start/InsertDataId/?id='.$i['id'].'">
+    echo '<li><form  method="POST" action="index.php/start/DataId/?id='.$i['id'].'">
      Айдишник : '.$i['id'].' |Имя: '.$i['name'].'| Описание :'.$i['info'].
 		'| номер телефона :'.$i['number'].'
 			<input type="submit" name="add"  value="Редактировать"/>
@@ -26,7 +28,9 @@ foreach ($table as $i)
 }
 
 
-echo '</ul>';
+echo '</ul>' ;
+
+
 
 
 	?>

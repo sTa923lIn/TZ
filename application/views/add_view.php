@@ -10,10 +10,14 @@
 		<p>Введите имя абонента - <input type="text" name="username"/></p>
 		<p>Введите описание - <input type="text" name="userinfo"/></p>
 			<p>Введите номер телефона <input type="text" name="number"/></p>
-
 		<input type="submit" name="add" value="Добавить запись"/>
+		
 
+			<input type="submit" name="revers" value="Вернуться к списку"/>
+				</form>
 
-	</form>
 </body>
 </html>
+
+
+ 
