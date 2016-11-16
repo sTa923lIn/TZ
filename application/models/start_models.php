@@ -42,11 +42,12 @@ class Start_Models extends CI_Model
 	}
 
 
-function InsertDbId ($data,$id) // вставка в базу
+function InsertDbId ($id) // вставка в базу
 
 	{
-		$this->db->where('id='.$id);;
-		$this->db->update('contacts',$data); 
+		$this->db->where('id='.$id);
+		$query=$this->db->get('contacts');
+		return $query->row_array();
 
 	}
 
