@@ -52,11 +52,10 @@ function InsertDbId ($id) // вставка в базу
 	}
 
 
-	function UpdateDb ($id) // обновление записи 
+	function UpdateDb ($id,$data) // обновление записи 
 	{
 		$this->db->where('id='.$id);
-		$query=$this->db->get('contacts');
-		return $query->row_array();
+		$query=$this->db->update('contacts',$data);
 		 
 	}
 

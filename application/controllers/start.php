@@ -44,18 +44,33 @@ class Start extends CI_Controller {
 	function UpdateData() // обновление данных в базе
 
 	{
+			
+ 			if (isset($_POST['save'])) // дописать еще пост полей или сделать так, что бы не было ложных срабатываний пост
+		{
 			$id=$_POST['id'];
- echo $id;
-		
+
+			$data=array(
+				'name'=>$_POST['username'],
+				'info'=>$_POST['userinfo'],
+				'number'=>$_POST['number']	
+			); 	
+										 
+		$this->start_models->UpdateDb($id,$data);
+		$this->load->view('good_view'); // вьшка добавления записи	
+
+		}
+$this->load->view('start_view');
 
 	}
+
+
 
 	function InsertDataId()   // выборка данных данных из базы по id
 	{
 
 		$id=$_GET['id']; 	
 
-		$query['row']=$this->start_models->UpdateDb($id);
+		$query['row']=$this->start_models->InsertDbId($id);
 		$this->load->view('update_view',$query); // вьшка добавления записи		
 	}
 }
