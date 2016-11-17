@@ -9,20 +9,33 @@ class Start_Models extends CI_Model
 		
 		$this->load->database();
 	}
- 
 
- // function CreateDb () // создание базы
+	function FormRules()
+	{
+		$ruls=array(
 
- // 	{
-	// //  	$ct3='create table Users (
-	// // 	id int not null auto_increment primary key,
-	// // 	username varchar(30), 
-	// // 	pass varchar(255) not null,
-	// // 	email varchar(100), roleid int, 
-	// // 	foreign key(roleid) references Roles(id) on delete cascade on update cascade)
-	// // 	default charset="utf8"';
-	// // 	tools::createtable($ct3);
-	// }
+				array(
+					'field' => 'name',
+					'label' => 'Имя абонента',
+					'rules' => 'required|max_length[50]|alpha|trim'
+					),
+
+				array(
+					'field' => 'number',
+					'label' => 'Номер телефона',
+					'rules' => 'required|exact_length[13]|numeric|integer|trim'
+					),
+
+				array(
+					'field' => 'info',
+					'label' => 'Описание',
+					'rules' => 'required|max_length[255]|trim'
+					),
+
+
+			);
+	}
+
 
 
 	function SelectDb() // выборка из базы

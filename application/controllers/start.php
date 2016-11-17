@@ -7,25 +7,42 @@ class Start extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('start_models'); // загрузили модель
-		
+		$this->load->library('form_validation');
 	}
 	
 	public function index() // метод для стартовой страницы
 	{ 
 		
-	$query['table']=$this->start_models->SelectDb();	
-	$this->load->helper('url'); 
-	$u=site_url("InsertData");										
-	$this->load->view('start_view', $query, $u); 
+	$query['table']=$this->start_models->SelectDb();											
+	$this->load->view('start_view', $query); 
 	
 
 	}
 
+function DataValid()
+{	
+	if (isset($_POST['add'])) //
+		{
+				$this->form_validation->set_rules($this->start_models->FormRules);
+				$rul=$this->form_validation->run();
+
+				if ($rul == TRUE) 
+				{
+						$this->InsertData();
+				}
+		}
+		else
+		{
+			$this->load->view('add_view');
+		}
+
+
+}
+
+
 	function InsertData() // вставка данных в базу
 	{
 
-		if (isset($_POST['add'])) // дописать еще пост полей или сделать так, что бы не было ложных срабатываний пост
-		{
 			$data=array(
 				'name'=>$_POST['username'],
 				'number'=>$_POST['number'],
@@ -33,17 +50,9 @@ class Start extends CI_Controller {
 			); 	
 										 
 		$this->start_models->InsertDb($data);
-		$this->load->view('good_view'); // вьшка добавления записи
-
-
-
-		}
-		elseif (isset($_POST['revers'])) 
-		{
-			$this->index();
-		}
 		
-			$this->load->view('add_view');
+		$this->load->view('add_view');
+
 		
 	}
 	
@@ -56,18 +65,17 @@ class Start extends CI_Controller {
 		{
 			$id=$_POST['id'];
 
-			$data=array(
-				'name'=>$_POST['username'],
-				'number'=>$_POST['number'],
-				'info'=>$_POST['userinfo']	
-			); 	
+				$data=array(
+					'name'=>$_POST['username'],
+					'number'=>$_POST['number'],
+					'info'=>$_POST['userinfo']	
+				); 	
 										 
-		$this->start_models->UpdateDb($id,$data);
-		$this->load->view('good_view'); // вьшка добавления записи	
+		$this->start_models->UpdateDb($id,$data);	
 
 		}
-$this->load->view('start_view');
 
+		$this->index();
 	}
 
 
