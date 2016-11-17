@@ -15,9 +15,7 @@ class Start extends CI_Controller {
 		
 	$query['table']=$this->start_models->SelectDb();	
 	$this->load->helper('url'); 
-	$u=array(
-		'InsertData' => site_url("InsertData")
-		);										
+	$u=site_url("InsertData");										
 	$this->load->view('start_view', $query, $u); 
 	
 

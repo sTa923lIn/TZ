@@ -7,9 +7,9 @@
 <body>
 
 	<form method="POST" action="../start/InsertData">
-		<p>Введите имя абонента - <input type="text" name="username"/></p>
-		<p>Введите описание - <input type="text" name="userinfo"/></p>
-			<p>Введите номер телефона <input type="text" name="number"/></p>
+		<p>Введите имя абонента - <input type="text" name="username" placeholder="Ddtlbntkjnkb"/></p>
+		<p>Введите описание - <input type="text" name="userinfo" placeholder="Ddtlbntkjnkb"/></p>
+			<p>Введите номер телефона <input type="text" name="number" placeholder="Ddtlbntkjnkb"/></p>
 		<input type="submit" name="add" value="Добавить запись"/>
 		
 

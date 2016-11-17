@@ -3,54 +3,60 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Телефонная книга</title>
+
+	<?php $this->load->helper('url');?>
+
+	<link rel="stylesheet" href="../css/bootstrap.css" />
+		<script src="../js/jquery-3.1.1.min.js"></script>
+		<script src="../js/bootstrap.js"></script>
+
 </head>
 <body>
 
-<?php
 
-	echo '<form  action="'.$InsertData.'"> <!-- // передаем форму контроллеру start -->
+
+<div class="container">
+	<form  action="start/InsertData"> <!-- // передаем форму контроллеру start -->
 			
 			<p><input type="submit" value="Добавить новую запись"/></p> <!-- кнопка добавления новой записи -->
 
-	</form>';
+	</form>
+</div>
 
-	
+<div>
 
-echo '<ul>';
+	<table class="table table-bordered table-condensed">
+
+
+<?php
+
 foreach ($table as $i)
 {
-    echo '<li><form  method="POST" action="index.php/start/DataId/?id='.$i['id'].'">
-     Айдишник : '.$i['id'].' |Имя: '.$i['name'].'| Описание :'.$i['info'].
-		'| номер телефона :'.$i['number'].'
-			<input type="submit" name="add"  value="Редактировать"/>
-		</form></li>';
-
+ echo '<tr>
+						 <td>'.$i['id'].'</td>
+						 <td>'.$i['name'].'</td>
+						 <td>'.$i['info'].'</td>
+						 <td>'.$i['number'].'</td>
+						<td>
+								<form  method="POST" action="index.php/start/DataId/?id='.$i['id'].'">
+										<input type="submit" name="add"  value="Редактировать запись"/>
+								</form>
+						</td>
+						<td>
+							<!-- <form  method="POST" action="index.php/start/DataId/?id='.$i['id'].'"> -->
+									<a href="#" class="btn btn-mini">Удалить</a>
+									
+							
+						</td>
+			</tr>';
 }
-
-
-echo '</ul>' ;
-
-
-
 
 	?>
 
+	</table>
+</div>
 
 
-
-<!-- <?php
-$this->load->helper('date');
-$now = time();
-
-echo '<br>Системное время : '.unix_to_human($now, TRUE, 'eu'); // Время в Европейском формате с секундами
-?>
-	<!-- <form method="POST" action="../index.php/start/InsertData">
-		<p>Введите имя абонента - <input type="text" name="username"/></p>
-		<p>Введите описание - <input type="text" name="userinfo"/></p>
-			<p>Введите номер телефона <input type="text" name="number"/></p>
-
-		<input type="submit" name="add" value="Добавить запись"/>
- -->
 	</form>
 </body>
 </html>
