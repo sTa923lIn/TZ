@@ -6,11 +6,10 @@
 </head>
 <body>
 
-	<form method="POST" action="<?=base_url()?>index.php/start/UpdateData">
-		<p>Введите имя абонента - <input type="text" name="id" value="<?php echo $row['id'];?>"/></p>
-		<p>Введите имя абонента - <input type="text" name="username" value="<?php echo $row['name'];?>"/></p>
-		<p>Введите номер телефона <input type="text" name="number" value="<?php echo $row['number'];?>"/></p>
-		<p>Введите описание - <input type="text" name="userinfo" value="<?php echo $row['info'];?>"/></p>
+	<form method="POST" action="<?=base_url()?>index.php/start/UpdateData/?id=<?=$row['id']?>">
+		<p>Введите имя абонента - <input type="text" name="username" value="<?=$row['name']?>"/><?=form_error('username')?></p>
+		<p>Введите номер телефона <input type="text" name="number" value="<?=$row['number']?>"/><?=form_error('number')?></p>
+		<p>Введите описание - <input type="textrea" name="userinfo" value="<?=$row['info']?>"/><?=form_error('userinfo')?></p>
 			
 
 		<input type="submit" name="save" value="Сохранить"/>

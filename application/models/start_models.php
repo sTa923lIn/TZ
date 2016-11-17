@@ -10,31 +10,35 @@ class Start_Models extends CI_Model
 		$this->load->database();
 	}
 
-	function FormRules()
-	{
-		$ruls=array(
+
+function ValidDB()
+{
+	 $ruls=array(
 
 				array(
-					'field' => 'name',
-					'label' => 'Имя абонента',
+					'field' => 'username',
+					'label' => 'Имя',
 					'rules' => 'required|max_length[50]|alpha|trim'
 					),
 
 				array(
 					'field' => 'number',
-					'label' => 'Номер телефона',
-					'rules' => 'required|exact_length[13]|numeric|integer|trim'
+					'label' => 'Номер',
+					'rules' => 'required|exact_length[12]|numeric|integer|trim'
 					),
 
 				array(
-					'field' => 'info',
+					'field' => 'userinfo',
 					'label' => 'Описание',
 					'rules' => 'required|max_length[255]|trim'
 					),
-
-
 			);
-	}
+				$this->form_validation->set_rules($ruls);
+				$rul=$this->form_validation->run();
+				return $rul;
+
+
+}
 
 
 
@@ -76,9 +80,6 @@ function InsertDbId ($id) // вставка в базу
 	function DeleteDb() // удаление из базы
 	{
 
-		$this->db->where(array('sizeimage <' => $size));
-		$query = $this->db->get('picturies');
-		return $query->result_array();
 
 	}
 		

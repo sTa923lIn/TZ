@@ -15,7 +15,7 @@
 
 
 <div class="container">
-	<form  action="<?=base_url()?>index.php/start/InsertData"> <!-- // передаем форму контроллеру start -->
+	<form  action="<?=base_url()?>index.php/start/DataValid"> <!-- // передаем форму контроллеру start -->
 			
 			<p><input type="submit" value="Добавить новую запись"/></p> <!-- кнопка добавления новой записи -->
 
@@ -27,7 +27,6 @@
 	<table class="table table-bordered table-condensed table-striped " >
 
 <tr>
-			<th>#</th>
 			<th>Имя</th>
 			<th>Телефон</th>
 			<th>Описание</th>
@@ -40,13 +39,12 @@
 foreach ($table as $i)
 {
  echo '<tr>
-						 <td>'.$i['id'].'</td>
 						 <td>'.$i['name'].'</td>
 						 <td>'.$i['number'].'</td>
 						 <td>'.$i['info'].'</td>
 						<td>
 								<form  method="POST" action="'.base_url().'index.php/start/InsertDataId/?id='.$i['id'].'">
-										<input type="submit" name="add"  value="Редактировать запись"/>
+										<input type="submit" name="edit"  value="Редактировать запись"/>
 								</form>
 						</td>
 						<td>

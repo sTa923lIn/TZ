@@ -23,69 +23,93 @@ function DataValid()
 {	
 	if (isset($_POST['add'])) //
 		{
-				$this->form_validation->set_rules($this->start_models->FormRules);
-				$rul=$this->form_validation->run();
+				$rul=$this->start_models->ValidDB();
 
 				if ($rul == TRUE) 
 				{
 						$this->InsertData();
 				}
+				else
+				{
+					$this->load->view('add_view');
+				}
+		}
+		elseif(isset($_POST['revers']))
+		{
+			$this->index();
 		}
 		else
 		{
 			$this->load->view('add_view');
 		}
 
-
 }
 
 
 	function InsertData() // вставка данных в базу
 	{
-
-			$data=array(
-				'name'=>$_POST['username'],
-				'number'=>$_POST['number'],
-				'info'=>$_POST['userinfo']	
-			); 	
-										 
-		$this->start_models->InsertDb($data);
-		
-		$this->load->view('add_view');
-
-		
-	}
-	
-
-	function UpdateData() // обновление данных в базе
-
-	{
-			
- 			if (isset($_POST['save'])) // дописать еще пост полей или сделать так, что бы не было ложных срабатываний пост
-		{
-			$id=$_POST['id'];
-
+			if (isset($_GET['id'])) 
+			{
+				$id=$_GET['id'];
 				$data=array(
 					'name'=>$_POST['username'],
 					'number'=>$_POST['number'],
 					'info'=>$_POST['userinfo']	
 				); 	
 										 
-		$this->start_models->UpdateDb($id,$data);	
+			$this->start_models->UpdateDb($id,$data);	
+			}
+			else
+			{
+				$data=array(
+					'name'=>$_POST['username'],
+					'number'=>$_POST['number'],
+					'info'=>$_POST['userinfo']	
+				); 	
+											 
+			$this->start_models->InsertDb($data);
+			}		
 
+			$this->index();
+	}
+	
+
+	function UpdateData() // обновление данных в базе
+
+	{		
+
+if (isset($_POST['save'])) //
+		{
+				$rul=$this->start_models->ValidDB();
+
+				if ($rul == TRUE) 
+				{
+						$this->InsertData();
+				}
+				else
+				{
+					$this->InsertDataId();
+				}
+		}
+		elseif(isset($_POST['revers']))
+		{
+			$this->index();
+		}
+		else
+		{
+			$this->load->view('update_view');
 		}
 
-		$this->index();
+
 	}
 
 
 
 	function InsertDataId()   // выборка данных данных из базы по id
 	{
-
 		$id=$_GET['id']; 	
-
 		$query['row']=$this->start_models->InsertDbId($id);
 		$this->load->view('update_view',$query); // вьшка добавления записи		
+
 	}
 }
