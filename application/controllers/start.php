@@ -100,10 +100,7 @@ if (isset($_POST['save'])) //
 			$this->load->view('update_view');
 		}
 
-
 	}
-
-
 
 	function InsertDataId()   // выборка данных данных из базы по id
 	{
@@ -112,4 +109,15 @@ if (isset($_POST['save'])) //
 		$this->load->view('update_view',$query); // вьшка добавления записи		
 
 	}
+
+
+function DeleteData()
+{
+	$id=$_GET['id']; 	
+
+		$this->start_models->DeleteDB($id);
+		$this->index();
+}
+
+
 }

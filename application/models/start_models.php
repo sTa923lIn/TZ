@@ -77,9 +77,10 @@ function InsertDbId ($id) // вставка в базу
 	}
 
 
-	function DeleteDb() // удаление из базы
+	function DeleteDb($id) // удаление из базы
 	{
-
+		$this->db->where('id',$id);
+		$this->db->delete('contacts');
 
 	}
 		
