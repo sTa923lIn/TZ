@@ -113,10 +113,9 @@ if (isset($_POST['save'])) //
 
 function DeleteData()
 {
-	$id=$_GET['id']; 	
-
+		$id=$_GET['id']; 	
 		$this->start_models->DeleteDB($id);
-		$this->index();
+		
 }
 
 
