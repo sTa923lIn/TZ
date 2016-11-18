@@ -12,8 +12,10 @@
 
 </head>
 <body>
-<h2><p> Страница добавления записи </h2></p>
+
 <div class="container">
+<h3><p> Страница добавления записи </h3></p><br>
+
 	<form method="POST" action="<?=base_url()?>index.php/start/DataValid">
 		<p>Введите имя абонента - <input type="text" name="username" value="<?=set_value('username')?>" placeholder="Например : Сергей"/><?=form_error('username')?></p>
 		<p>Введите номер телефона <input type="text" name="number" value="<?=set_value('number')?>" placeholder="Например : 380633641777"/><?=form_error('number')?></p>

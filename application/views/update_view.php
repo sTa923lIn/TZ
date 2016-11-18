@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Телефонная книга</title>
+	<title>Редактирование телефонной книги</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	
@@ -14,7 +14,9 @@
 <body>
 <div class="container">
 
-	<form method="POST" action="<?=base_url()?>index.php/start/UpdateData/?id=<?=$row['id']?>">
+<p><h3>Редактирование телефонной книги</h3></p><br>
+
+	<form class="form-horizontal" method="POST" action="<?=base_url()?>index.php/start/UpdateData/?id=<?=$row['id']?>">
 		<p>Введите имя абонента - <input type="text" name="username" value="<?=$row['name']?>"/><?=form_error('username')?></p>
 		<p>Введите номер телефона <input type="text" name="number" value="<?=$row['number']?>"/><?=form_error('number')?></p>
 		<p>Введите описание - <input type="textrea" name="userinfo" value="<?=$row['info']?>"/><?=form_error('userinfo')?></p>
